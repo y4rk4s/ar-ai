@@ -1,133 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="hu">
 <head>
-    <title>Akadálymentesítési hibák gyűjteménye</title>
-    <style>
-        .button {
-            background-color: #006400;
-            color: #008000;
-            padding: 10px;
-            cursor: pointer;
-        }
-        .error {
-            color: red;
-        }
-        .skip-link {
-            position: absolute;
-            left: -9999px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Akadálymentesítési hibák bemutatása</title>
+  <style>
+    .low-contrast {
+      background-color: #eee;
+      color: #eaeaea;
+    }
+    .fake-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: blue;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-    <!-- Hiányzó "skip to content" link -->
-    
-    <!-- Nem szemantikus fejléc és navigáció -->
-    <div class="header">
-        <div onclick="navigateToHome()" style="cursor: pointer;">Főoldal</div>
-        <div onclick="navigateToContact()" style="cursor: pointer;">Kapcsolat</div>
-        <div onclick="navigateToAbout()" style="cursor: pointer;">Rólunk</div>
-    </div>
 
-    <!-- Kép alt attribútum nélkül -->
-    <img src="logo.png">
-    
-    <!-- Dekoratív kép felesleges alt szöveggel -->
-    <img src="decoration.png" alt="Dekoratív vonal">
-    
-    <!-- Nem megfelelő fejléc hierarchia -->
-    <h1>Üdvözöljük a weboldalon</h1>
-    <h3>Fontos információk</h3>
-    <h2>Legfrissebb hírek</h2>
-    
-    <!-- Nem szemantikus struktúra -->
-    <div class="content">
-        <div class="article">
-            <div class="title">Első cikk címe</div>
-            <div class="text">Ez az első cikk tartalma...</div>
-        </div>
-    </div>
-    
-    <!-- Táblázat hiányzó fejlécekkel és caption nélkül -->
-    <table>
-        <tr>
-            <td>Név</td>
-            <td>Email</td>
-            <td>Telefonszám</td>
-        </tr>
-        <tr>
-            <td>Kiss János</td>
-            <td>janos@example.com</td>
-            <td>+36 20 123 4567</td>
-        </tr>
-    </table>
-    
-    <!-- Űrlap hiányzó címkékkel és csoportosítással -->
-    <form>
-        <input type="text" placeholder="Felhasználónév">
-        <input type="password" placeholder="Jelszó">
-        <div class="button" onclick="login()">Bejelentkezés</div>
-        
-        <!-- Hiányzó fieldset és legend -->
-        <input type="radio" name="gender" value="male"> Férfi
-        <input type="radio" name="gender" value="female"> Nő
-        <input type="radio" name="gender" value="other"> Egyéb
-    </form>
-    
-    <!-- Csak színre alapuló visszajelzés -->
-    <div class="error">Hiba történt! Kérjük, próbálja újra.</div>
-    
-    <!-- Nem megfelelő link szöveg -->
-    <a href="file.pdf">Kattintson ide</a>
-    <a href="details.html">Olvass tovább</a>
-    
-    <!-- Automatikusan lejátszódó hang kontroll nélkül -->
-    <audio autoplay>
-        <source src="background.mp3" type="audio/mpeg">
-    </audio>
-    
-    <!-- Villogó tartalom -->
-    <div style="animation: blink 0.5s linear infinite alternate;">Fontos figyelmeztetés!</div>
-    
-    <!-- Nehezen olvasható szöveg rossz betűmérettel -->
-    <div style="font-size: 8px;">Ez a szöveg nagyon kicsi és nehezen olvasható.</div>
-    
-    <!-- Alacsony kontrasztú szöveg -->
-    <div style="color: #cccccc; background-color: #eeeeee;">Ez a szöveg alacsony kontrasztú.</div>
-    
-    <!-- ARIA hibák -->
-    <div role="button">Ez egy hamis gomb ARIA role-lal, de nincs tabindex és keyboard handler</div>
-    
-    <!-- Hiányzó ARIA-required tulajdonságok kötelező mezőknél -->
-    <input type="text" placeholder="Kötelező mező">
-    
-    <!-- Képernyőolvasó-specifikus hibák -->
-    <div aria-hidden="true">
-        <a href="important.html">Fontos információ</a>
-    </div>
-    
-    <!-- Helytelen olvasási sorrend -->
-    <div style="display: flex; flex-direction: column-reverse;">
-        <div>Ez az első elem a DOM-ban, de vizuálisan utolsó</div>
-        <div>Ez a második elem a DOM-ban, de vizuálisan első</div>
-    </div>
-    
-    <!-- Nem megfelelően jelölt ikonok -->
-    <span class="icon">✓</span> Sikeres művelet
-    
-    <!-- Időkorlátos tartalom -->
-    <div id="timeout-message">Ez az üzenet 10 másodperc múlva eltűnik</div>
-    
-    <!-- Hiányzó lang attribútum -->
-    <blockquote>
-        This is an English quote without proper language marking.
-    </blockquote>
-    
-    <!-- JavaScript függőség -->
-    <div id="dynamic-content">Ez a tartalom csak JavaScript-tel érhető el</div>
-    
-    <!-- Billentyűzet csapdák -->
-    <div tabindex="0" onkeydown="event.stopPropagation()">
-        <input type="text" placeholder="Billentyűzet csapda">
-    </div>
+  <!-- 1. Rossz heading hierarchy -->
+  <h1>Főcím</h1>
+  <h3>Alcím h3-mal (kihagyott h2)</h3>
+
+  <!-- 2. Hiányzó alt -->
+  <img src="logo.png">
+
+  <!-- 3. Nem egyedi ID-k -->
+  <div id="ismetlodo">Tartalom 1</div>
+  <div id="ismetlodo">Tartalom 2</div>
+
+  <!-- 4. Label nincs inputhoz rendelve -->
+  <label>Felhasználónév</label>
+  <input type="text" name="username">
+
+  <!-- 5. Csak színnel közölt információ -->
+  <p>Az <span style="color: red;">piros</span> mező kötelező!</p>
+
+  <!-- 6. Alacsony kontraszt -->
+  <p class="low-contrast">Ez egy nagyon halvány szöveg.</p>
+
+  <!-- 7. Nem gombként működő elem -->
+  <div class="fake-button">Kattints ide!</div>
+
+  <!-- 8. Link, ami nem mondja meg, hova vezet -->
+  <a href="https://example.com">Kattints ide</a>
+
+  <!-- 9. ARIA szerepkör hibásan használva -->
+  <div role="button" aria-pressed="maybe">Nem egyértelmű ARIA attribútum</div>
+
 </body>
 </html>
